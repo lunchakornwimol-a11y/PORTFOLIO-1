@@ -1,0 +1,879 @@
+
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131b">
+  <title>ภาพกิจกรรม — Lunchakorn Wimol Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #10131b;
+      --panel: #181c27;
+      --line: rgba(255,255,255,.10);
+      --text: #f2f4f8;
+      --muted: #9aa3b5;
+      --accent: #c8f542;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "IBM Plex Sans Thai","Manrope",system-ui,sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 48px;
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: .12em;
+      font-size: 14px;
+    }
+
+    .wordmark .mark {
+      background: var(--accent);
+      color: #10131b;
+      padding: 6px 10px;
+      border-radius: 8px;
+      letter-spacing: .04em;
+    }
+
+    .back {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      padding: 10px 18px;
+      border-radius: 8px;
+      transition: .2s;
+    }
+
+    .back:hover {
+      background: var(--accent);
+      color: #10131b;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(28px,4.5vw,48px);
+      line-height: 1.2;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1 .dot {
+      color: var(--accent);
+    }
+
+    .organizer {
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 8px;
+    }
+
+    .count {
+      color: var(--accent);
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+      gap: 16px;
+    }
+
+    .gallery button {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: zoom-in;
+      aspect-ratio: 4/3;
+      padding: 0;
+      transition: .25s;
+    }
+
+    .gallery button:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .empty {
+      border: 1px dashed var(--line);
+      border-radius: 14px;
+      padding: 48px 24px;
+      text-align: center;
+      color: var(--muted);
+      grid-column: 1 / -1;
+    }
+
+    .nav-between {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .nav-between a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      border: 1px solid var(--line);
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: .2s;
+    }
+
+    .nav-between a:hover,
+    .nav-between a.active {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(8,10,15,.96);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      padding: 24px;
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 10px;
+      cursor: zoom-in;
+      user-select: none;
+      -webkit-user-drag: none;
+      transform: translate(0,0) scale(1);
+      transition: transform .15s ease;
+      touch-action: none;
+    }
+
+    .lightbox img.zoomed {
+      cursor: grab;
+    }
+
+    .lightbox img.dragging {
+      cursor: grabbing;
+      transition: none;
+    }
+
+    .lb-btn {
+      position: absolute;
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 22px;
+      cursor: pointer;
+      transition: .2s;
+      z-index: 6;
+    }
+
+    .lb-btn:hover {
+      background: var(--accent);
+      color: #10131b;
+    }
+
+    .lb-close {
+      top: 20px;
+      right: 20px;
+    }
+
+    .lb-prev {
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lb-next {
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lb-count {
+      position: absolute;
+      bottom: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      z-index: 6;
+    }
+
+    /* ZOOM CONTROLS */
+
+    .zoom-controls {
+      position: absolute;
+      bottom: 55px;
+      display: flex;
+      gap: 12px;
+      z-index: 7;
+    }
+
+    .zoom-controls button {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.12);
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .zoom-controls button:hover {
+      background: var(--accent);
+      color: #10131b;
+    }
+
+    @media(max-width:600px) {
+      .wrap {
+        padding: 20px 16px 60px;
+      }
+
+      .topbar {
+        gap: 12px;
+        margin-bottom: 32px;
+      }
+
+      .back {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+        gap: 10px;
+      }
+
+      .lightbox {
+        padding: 12px;
+      }
+
+      .lightbox img {
+        max-width: 95vw;
+        max-height: 78vh;
+      }
+
+      .lb-btn {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="wordmark" href="index.html">
+      <span class="mark">LW</span>
+      <span>PORTFOLIO</span>
+    </a>
+
+    <a class="back" href="index.html#journey">
+      ← กลับหน้ากิจกรรม
+    </a>
+  </div>
+
+  <p class="eyebrow" id="type"></p>
+  <h1 id="title"></h1>
+  <p class="organizer" id="organizer"></p>
+  <p class="count" id="count"></p>
+
+  <div class="gallery" id="gallery"></div>
+
+  <div class="nav-between" id="others"></div>
+
+</div>
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox">
+
+  <button class="lb-btn lb-close" id="lbClose" aria-label="ปิด">×</button>
+
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="ก่อนหน้า">‹</button>
+
+  <img id="lbImg" src="" alt="ภาพกิจกรรม">
+
+  <button class="lb-btn lb-next" id="lbNext" aria-label="ถัดไป">›</button>
+
+  <div class="zoom-controls">
+    <button id="zoomOut" aria-label="ซูมออก">−</button>
+    <button id="zoomReset" aria-label="คืนค่าซูม">↺</button>
+    <button id="zoomIn" aria-label="ซูมเข้า">+</button>
+  </div>
+
+  <span class="lb-count" id="lbCount"></span>
+
+</div>
+
+<script>
+
+/* =====================================
+   ACTIVITY DATA
+===================================== */
+
+const ACTIVITIES = {
+
+  "01": {
+    type: "PROGRAMMING CAMP · OCT 2026",
+    title: "DDCT Innovative Camp 2026",
+    organizer: "ผู้จัด: การออกแบบดิจิทัลและเทคโนโลยีสร้างสรรค์ วิทยาลัยสหวิทยาการ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี",
+    images: [
+      "assets/ddct-1.jpg",
+      "assets/activities/ddct1.jpg",
+      "assets/activities/ddct2.JPG",
+      "assets/activities/ddct4.JPG",
+      "assets/activities/ddct5.JPG",
+      "assets/activities/ddct6.JPG",
+      "assets/activities/ddct7.JPG",
+      "assets/activities/ddct8.JPG"
+    ]
+  },
+
+  "02": {
+    type: "WEB DEVELOPMENT · AUG 2026",
+    title: "I CS YOU CAMP 2026",
+    organizer: "ผู้จัด: ภาควิชาวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์",
+    images: [
+      "assets/icsyou-1.jpg",
+      "assets/activities/cs1.JPG",
+      "assets/activities/cs2.JPG",
+      "assets/activities/cs3.JPG",
+      "assets/activities/cs4.JPG",
+      "assets/activities/cs5.jpg",
+      "assets/activities/cs6.JPG",
+      "assets/activities/cs7.jpg",
+      "assets/activities/cs8.jpg",
+      "assets/activities/cs9.jpg",
+      "assets/activities/cs10.jpg"
+    ]
+  },
+
+  "03": {
+    type: "GAME DEVELOPMENT · APR 2026",
+    title: "It's All About Computer Engineer Camp",
+    organizer: "ผู้จัด: ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตหาดใหญ่",
+    images: [
+      "assets/unity-1.jpg",
+      "assets/activities/unity1.jpg",
+      "assets/activities/unity2.jpg",
+      "assets/activities/unity3.jpg",
+      "assets/activities/unity4.jpg",
+      "assets/activities/unity5.JPG",
+      "assets/activities/unity6.JPG",
+      "assets/activities/unity7.JPG",
+      "assets/activities/unity8.JPG",
+      "assets/activities/unity9.JPG",
+      "assets/activities/unity10.JPG",
+      "assets/activities/unity11.JPG"
+    ]
+  },
+
+  "04": {
+    type: "ENGINEERING · 2026",
+    title: "K-Engineering World Tour and Competency Challenge 2026",
+    organizer: "ผู้จัด: คณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง",
+    images: [
+      "assets/kmitl1.PNG",
+      "assets/activities/kmitl1.jpg",
+      "assets/activities/kmitl2.jpg",
+      "assets/activities/kmitl3.jpg",
+      "assets/activities/kmitl4.JPG",
+      "assets/activities/kmitl5.JPG",
+      "assets/activities/kmitl6.JPG"
+    ]
+  },
+
+  "05": {
+    type: "OPEN HOUSE · 2026",
+    title: "KMUTNB Open House 2026",
+    organizer: "ผู้จัด: มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ",
+    images: [
+      "assets/kmutnb.PNG",
+      "assets/activities/kmutnb1.jpg",
+      "assets/activities/kmutnb2.JPG",
+      "assets/activities/kmutnb3.jpg",
+      "assets/activities/kmutnb4.JPG",
+      "assets/activities/kmutnb5.JPG",
+      "assets/activities/kmutnb6.jpg",
+      "assets/activities/kmutnb7.jpg",
+      "assets/activities/kmutnb8.JPG",
+      "assets/activities/kmutnb9.JPG"
+    ]
+  },
+
+  "06": {
+    type: "INTERNSHIP · OCT 2025",
+    title: "ฝึกประสบการณ์วิชาชีพ งานเทคโนโลยีสารสนเทศ",
+    organizer: "ผู้จัด: งานเทคโนโลยีสารสนเทศ ฝ่ายบริหารงานทั่วไป สำนักปลัดเทศบาล เทศบาลนครสุราษฎร์ธานี",
+    images: [
+      "assets/t.jpg",
+      "assets/activities/internship3.JPG",
+      "assets/activities/internship2.JPG",
+      "assets/activities/internship1.JPG",
+      "assets/activities/internship4.JPG"
+    ]
+  },
+
+  "07": {
+    type: "OTHER CAMP · APR 2025",
+    title: "ฝึกอบรมการช่วยชีวิตและการปฐมพยาบาลเบื้องต้น",
+    organizer: "ผู้จัด: มูลนิธิกุศลศรัทธา จังหวัดสุราษฎร์ธานี",
+    images: [
+      "assets/activities/กู้ภัย (1).PNG",
+      "assets/activities/กู้ภัย (2).PNG",
+      "assets/activities/กู้ภัย (3).PNG",
+      "assets/activities/กู้ภัย (4).PNG",
+      "assets/activities/กู้ภัย1 (1).JPG",
+      "assets/activities/กู้ภัย1 (2).JPG",
+      "assets/activities/กู้ภัย1 (3).JPG",
+      "assets/activities/กู้ภัย1 (4).JPG",
+      "assets/activities/กู้ภัย1 (5).JPG",
+      "assets/activities/กู้ภัย1.JPG",
+      "assets/activities/กู้ภัย2.JPG",
+      "assets/activities/กู้ภัย3.JPG",
+      "assets/activities/กู้ภัย4.JPG",
+      "assets/activities/กู้ภัย5.JPG",
+      "assets/activities/กู้ภัย6.JPG"
+    ]
+  },
+
+  "08": {
+    type: "VOLUNTEER · OCT 2026",
+    title: "กิจกรรมจิตอาสาพระราชทาน เนื่องในวันนวมินทรมหาราช",
+    organizer: "ผู้จัด: จังหวัดสุราษฎร์ธานี",
+    images: [
+      "assets/activities/001.jpg",
+      "assets/activities/002.jpg",
+      "assets/activities/003.jpg",
+      "assets/activities/004.jpg",
+      "assets/activities/005.jpg",
+      "assets/activities/006.jpg",
+      "assets/activities/007.jpg",
+      "assets/activities/008.jpg"
+    ]
+  },
+
+  "09": {
+    type: "VOLUNTEER · JUL 2025",
+    title: "ฝึกนักศึกษาวิชาทหารบังคับบัญชา",
+    organizer: "ผู้จัด: หน่วยฝึกนักศึกษาวิชาทหาร มณฑลทหารบกที่ 45 จังหวัดสุราษฎร์ธานี",
+    images: [
+      "assets/activities/นสท1.jpg",
+      "assets/activities/นสท2.jpg",
+      "assets/activities/นสท3.JPG",
+      "assets/activities/นสท4.jpg",
+      "assets/activities/นสท5.jpg",
+      "assets/activities/นสท6.jpg"
+    ]
+  }
+
+};
+
+/* =====================================
+   LOAD ACTIVITY
+===================================== */
+
+const params = new URLSearchParams(location.search);
+const id = params.get("id") || "01";
+
+const act = ACTIVITIES[id] || ACTIVITIES["01"];
+const currentId = ACTIVITIES[id] ? id : "01";
+
+document.title = act.title + " — ภาพกิจกรรม";
+
+document.getElementById("type").textContent = act.type;
+
+const title = document.getElementById("title");
+title.textContent = act.title;
+
+const dot = document.createElement("span");
+dot.className = "dot";
+dot.textContent = ".";
+title.appendChild(dot);
+
+document.getElementById("organizer").textContent = act.organizer;
+
+/* =====================================
+   GALLERY
+===================================== */
+
+const gallery = document.getElementById("gallery");
+
+let shown = [];
+
+function render() {
+
+  gallery.innerHTML = "";
+  shown = [];
+
+  let loaded = 0;
+  let finished = 0;
+
+  act.images.forEach((src) => {
+
+    const probe = new Image();
+
+    probe.onload = () => {
+      loaded++;
+      add(src);
+      done();
+    };
+
+    probe.onerror = () => {
+      done();
+    };
+
+    probe.src = src;
+
+  });
+
+  function add(src) {
+
+    const idx = shown.length;
+    shown.push(src);
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+
+    const img = document.createElement("img");
+    img.loading = "lazy";
+    img.alt = "ภาพกิจกรรม " + (idx + 1);
+    img.src = src;
+
+    btn.appendChild(img);
+
+    btn.addEventListener("click", () => openLb(idx));
+
+    gallery.appendChild(btn);
+  }
+
+  function done() {
+
+    finished++;
+
+    if (finished === act.images.length) {
+
+      document.getElementById("count").textContent =
+        loaded ? loaded + " ภาพ" : "";
+
+      if (!loaded) {
+        gallery.innerHTML =
+          '<div class="empty">ยังไม่มีรูปภาพของกิจกรรมนี้ — ตรวจสอบชื่อไฟล์และโฟลเดอร์ assets/activities/</div>';
+      }
+
+    }
+
+  }
+
+}
+
+render();
+
+/* =====================================
+   OTHER ACTIVITIES
+===================================== */
+
+const others = document.getElementById("others");
+
+Object.keys(ACTIVITIES).forEach((k) => {
+
+  const a = document.createElement("a");
+
+  a.href = "activity.html?id=" + k;
+  a.textContent = k + " · " + ACTIVITIES[k].title;
+
+  if (k === currentId) {
+    a.className = "active";
+  }
+
+  others.appendChild(a);
+
+});
+
+/* =====================================
+   LIGHTBOX
+===================================== */
+
+const lb = document.getElementById("lightbox");
+const lbImg = document.getElementById("lbImg");
+const lbCount = document.getElementById("lbCount");
+
+let cur = 0;
+
+function show(i) {
+
+  if (!shown.length) return;
+
+  cur = (i + shown.length) % shown.length;
+
+  resetZoom();
+
+  lbImg.src = shown[cur];
+
+  lbCount.textContent =
+    (cur + 1) + " / " + shown.length;
+
+}
+
+function openLb(i) {
+
+  show(i);
+  lb.classList.add("open");
+
+}
+
+function closeLb() {
+
+  lb.classList.remove("open");
+  resetZoom();
+
+}
+
+document.getElementById("lbClose").onclick = closeLb;
+
+document.getElementById("lbPrev").onclick = () => show(cur - 1);
+
+document.getElementById("lbNext").onclick = () => show(cur + 1);
+
+lb.addEventListener("click", (e) => {
+
+  if (e.target === lb) closeLb();
+
+});
+
+/* =====================================
+   IMAGE ZOOM SYSTEM
+===================================== */
+
+let zoom = 1;
+let posX = 0;
+let posY = 0;
+
+let dragging = false;
+let startX = 0;
+let startY = 0;
+
+const zoomInBtn = document.getElementById("zoomIn");
+const zoomOutBtn = document.getElementById("zoomOut");
+const zoomResetBtn = document.getElementById("zoomReset");
+
+function updateZoom() {
+
+  lbImg.style.transform =
+    `translate(${posX}px, ${posY}px) scale(${zoom})`;
+
+  lbImg.classList.toggle("zoomed", zoom > 1);
+
+}
+
+function resetZoom() {
+
+  zoom = 1;
+  posX = 0;
+  posY = 0;
+
+  updateZoom();
+
+}
+
+function zoomChange(amount) {
+
+  zoom = Math.min(5, Math.max(1, zoom + amount));
+
+  if (zoom === 1) {
+    posX = 0;
+    posY = 0;
+  }
+
+  updateZoom();
+
+}
+
+zoomInBtn.onclick = (e) => {
+  e.stopPropagation();
+  zoomChange(0.5);
+};
+
+zoomOutBtn.onclick = (e) => {
+  e.stopPropagation();
+  zoomChange(-0.5);
+};
+
+zoomResetBtn.onclick = (e) => {
+  e.stopPropagation();
+  resetZoom();
+};
+
+/* Mouse wheel zoom */
+
+lb.addEventListener("wheel", (e) => {
+
+  if (!lb.classList.contains("open")) return;
+
+  e.preventDefault();
+
+  zoomChange(e.deltaY < 0 ? 0.25 : -0.25);
+
+}, { passive: false });
+
+/* Double click zoom */
+
+lbImg.addEventListener("dblclick", (e) => {
+
+  e.preventDefault();
+
+  if (zoom === 1) {
+    zoom = 2;
+    updateZoom();
+  } else {
+    resetZoom();
+  }
+
+});
+
+/* Drag image */
+
+lbImg.addEventListener("pointerdown", (e) => {
+
+  if (zoom <= 1) return;
+
+  dragging = true;
+
+  startX = e.clientX - posX;
+  startY = e.clientY - posY;
+
+  lbImg.classList.add("dragging");
+
+  lbImg.setPointerCapture(e.pointerId);
+
+});
+
+lbImg.addEventListener("pointermove", (e) => {
+
+  if (!dragging) return;
+
+  posX = e.clientX - startX;
+  posY = e.clientY - startY;
+
+  updateZoom();
+
+});
+
+function stopDragging() {
+
+  dragging = false;
+  lbImg.classList.remove("dragging");
+
+}
+
+lbImg.addEventListener("pointerup", stopDragging);
+lbImg.addEventListener("pointercancel", stopDragging);
+
+/* =====================================
+   KEYBOARD CONTROLS
+===================================== */
+
+document.addEventListener("keydown", (e) => {
+
+  if (!lb.classList.contains("open")) return;
+
+  if (e.key === "Escape") {
+    closeLb();
+  }
+
+  if (e.key === "ArrowLeft") {
+    show(cur - 1);
+  }
+
+  if (e.key === "ArrowRight") {
+    show(cur + 1);
+  }
+
+  if (e.key === "+" || e.key === "=") {
+    zoomChange(0.5);
+  }
+
+  if (e.key === "-") {
+    zoomChange(-0.5);
+  }
+
+  if (e.key === "0") {
+    resetZoom();
+  }
+
+});
+
+</script>
+
+</body>
+</html>
