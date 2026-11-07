@@ -365,38 +365,146 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-// ===== TRANSCRIPT VIEWER =====
+
+/* =========================================
+   TRANSCRIPT ZOOM SYSTEM
+   ========================================= */
 
 let transcriptScale = 1;
+let transcriptX = 0;
+let transcriptY = 0;
 
-function openTranscript(src) {
-  const modal = document.getElementById("transcriptModal");
-  const img = document.getElementById("transcriptLarge");
+let isDraggingTranscript = false;
+let dragStartX = 0;
+let dragStartY = 0;
 
-  img.src = src;
+const transcriptModal =
+  document.getElementById("transcriptModal");
+
+const transcriptImage =
+  document.getElementById("transcriptLarge");
+
+const transcriptViewer =
+  document.getElementById("transcriptViewer");
+
+
+/* UPDATE IMAGE */
+function updateTranscriptZoom() {
+  if (!transcriptImage) return;
+
+  transcriptImage.style.transform =
+    `translate(${transcriptX}px, ${transcriptY}px) scale(${transcriptScale})`;
+}
+
+
+/* OPEN VIEWER */
+function openTranscript(imageSrc) {
+  if (!transcriptModal || !transcriptImage) return;
+
+  transcriptImage.src = imageSrc;
+
   transcriptScale = 1;
-  img.style.transform = "scale(1)";
+  transcriptX = 0;
+  transcriptY = 0;
 
-  modal.classList.add("active");
-  document.body.style.overflow = "hidden";
+  updateTranscriptZoom();
+
+  transcriptModal.classList.add("is-open");
+  document.body.classList.add("transcript-open");
 }
 
+
+/* CLOSE VIEWER */
+function closeTranscript() {
+  if (!transcriptModal) return;
+
+  transcriptModal.classList.remove("is-open");
+  document.body.classList.remove("transcript-open");
+
+  transcriptScale = 1;
+  transcriptX = 0;
+  transcriptY = 0;
+
+  updateTranscriptZoom();
+}
+
+
+/* ZOOM IN / OUT */
 function zoomTranscript(amount) {
-  transcriptScale = Math.min(3, Math.max(0.5, transcriptScale + amount));
+  transcriptScale = Math.min(
+    5,
+    Math.max(0.5, transcriptScale + amount)
+  );
 
-  document.getElementById("transcriptLarge")
-    .style.transform = `scale(${transcriptScale})`;
+  updateTranscriptZoom();
 }
 
+
+/* RESET ZOOM */
 function resetTranscriptZoom() {
   transcriptScale = 1;
-  document.getElementById("transcriptLarge")
-    .style.transform = "scale(1)";
+  transcriptX = 0;
+  transcriptY = 0;
+
+  updateTranscriptZoom();
 }
 
-function closeTranscript() {
-  document.getElementById("transcriptModal")
-    .classList.remove("active");
 
-  document.body.style.overflow = "";
+/* MOUSE WHEEL ZOOM */
+if (transcriptViewer) {
+
+  transcriptViewer.addEventListener("wheel", (e) => {
+    e.preventDefault();
+
+    const amount = e.deltaY < 0 ? 0.15 : -0.15;
+
+    zoomTranscript(amount);
+
+  }, { passive: false });
+
+
+  /* DRAG IMAGE */
+  transcriptViewer.addEventListener("pointerdown", (e) => {
+
+    isDraggingTranscript = true;
+
+    dragStartX = e.clientX - transcriptX;
+    dragStartY = e.clientY - transcriptY;
+
+    transcriptViewer.setPointerCapture(e.pointerId);
+
+  });
+
+
+  transcriptViewer.addEventListener("pointermove", (e) => {
+
+    if (!isDraggingTranscript) return;
+
+    transcriptX = e.clientX - dragStartX;
+    transcriptY = e.clientY - dragStartY;
+
+    updateTranscriptZoom();
+
+  });
+
+
+  transcriptViewer.addEventListener("pointerup", () => {
+    isDraggingTranscript = false;
+  });
+
+
+  transcriptViewer.addEventListener("pointercancel", () => {
+    isDraggingTranscript = false;
+  });
+
 }
+
+
+/* ESC TO CLOSE */
+document.addEventListener("keydown", (e) => {
+
+  if (e.key === "Escape") {
+    closeTranscript();
+  }
+
+});
