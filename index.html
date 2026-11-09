@@ -1,885 +1,155 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10131b">
-  <meta name="description" content="แฟ้มสะสมผลงาน ลัญฉกร วิมล | สาขาวิทยาการคอมพิวเตอร์">
-
-  <title>Lunchakorn Wimol — Portfolio 2570</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Songkran Simulator | Game Showcase</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Mali:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
-<!-- Transcript Zoom Viewer -->
-<div id="transcriptModal" class="transcript-modal">
 
-  <button class="transcript-close"
-    onclick="closeTranscript()">×</button>
-
-  <div class="zoom-controls">
-    <button onclick="zoomTranscript(0.2)">＋</button>
-    <button onclick="zoomTranscript(-0.2)">－</button>
-    <button onclick="resetTranscriptZoom()">RESET</button>
-  </div>
-
-  <div id="transcriptViewer" class="transcript-image-container">
-    <img id="transcriptLarge" src="" alt="เอกสารผลการเรียน">
-  </div>
-
-</div>
-
-</div>
 <body>
-  <div class="grain" aria-hidden="true"></div>
 
-  <!-- Navigation -->
-  <header class="nav">
-    <a class="wordmark" href="#home" aria-label="กลับหน้าแรก">
-      <span class="mark">LW</span>
-      <span>PORTFOLIO<span class="year"> / 2570</span></span>
-    </a>
+<header class="navbar">
+  <a href="#home" class="logo">
+    <span class="logo-icon">SS</span>
+    Songkran Simulator
+  </a>
 
-    <nav class="nav-links" aria-label="เมนูหลัก">
-      <a href="#about">เกี่ยวกับผม</a>
-      <a href="#journey">ประสบการณ์</a>
-      <a href="original.pdf" target="_blank" rel="noopener">เอกสารพอร์ต</a>
-    </nav>
+  <nav>
+    <a href="#home">หน้าแรก</a>
+    <a href="#game">ตัวอย่างเกม</a>
+  </nav>
 
-  </header>
+  <a href="#game" class="nav-button">EXPLORE ↗</a>
+</header>
 
-  <main>
+<main>
 
-    <!-- Hero -->
-    <section class="hero" id="home">
-      <div class="hero-copy">
+  <!-- HERO -->
+  <section class="hero" id="home">
 
-        <div class="profile-photo">
-          <img
-            id="profile-image"
-            src="assets/profile.jpg"
-            alt="ภาพโปรไฟล์ ลัญฉกร วิมล"
-          >
-        </div>
+   
 
-        <div class="kicker">
-          <span class="pulse"></span>
-          ADMISSION PORTFOLIO · 2027
-        </div>
-
-       <h1>
-  ผมอยากสร้าง<br>
-  นวัตกรรม<br>
-  <span class="outline">ทางเทคโนโลยี</span><br>
-  เพื่อพัฒนาชีวิตของผู้คนให้ดีขึ้น<span class="dot">.</span>
-</h1>
-
-        <p class="hero-desc">
-  ลัญฉกร วิมล — ผู้ที่สนใจการสร้าง 
-  <strong>"นวัตกรรมทางเทคโนโลยี"</strong> เพื่อให้ชีวิตของผู้คนดีขึ้น
-</p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#journey">
-            สำรวจเส้นทางของผม <span>↓</span>
-          </a>
-
-          <div>
-            <span class="meta-label">ACADEMIC YEAR</span>
-            <strong>2570 / 2027</strong>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Decorative graphic -->
-      <div class="hero-art" aria-label="ภาพกราฟิกตกแต่ง">
-
-<div class="portfolio-wordmark" aria-label="Portfolio">
-  <span class="wordmark-line"></span>
-  <span class="wordmark-text">PORTFOLIO</span>
-  <span class="wordmark-line"></span>
-</div>
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-
-        <div class="orb-core">
-          <span>&lt;/&gt;</span>
-        </div>
-
-        <div class="float-card code-card">
-          <div class="code-top">
-            <i></i>
-            <i></i>
-            <i></i>
-            <span>curiosity.js</span>
-          </div>
-
-          <pre><span class="code-purple">const</span> future = {
-  learn: <span class="code-green">"everyday"</span>,
-  build: <span class="code-green">"with purpose"</span>,
-  impact: <span class="code-orange">true</span>
-};</pre>
-        </div>
-
-        <div class="float-card badge-card">
-          <span class="badge-icon">✳</span>
-          <div>
-            <strong>Learn by making</strong>
-            <small>คิด · ทดลอง · พัฒนา</small>
-          </div>
-        </div>
-
-        <div class="side-note">
-          DESIGNING A BETTER TOMORROW — ONE LINE AT A TIME
-        </div>
-      </div>
-
-      <div class="scroll-hint">
-        <span></span>
-        SCROLL TO EXPLORE
-      </div>
-    </section>
-
-    <!-- Personal Profile -->
-    <section class="personal-profile section" id="personal-profile">
-      <div class="section-head">
-        <span class="section-no">01 / PERSONAL PROFILE</span>
-        <span class="section-rule"></span>
-        <span class="section-note">ประวัติส่วนตัว</span>
-      </div>
-
-      <div class="personal-profile-grid">
-        <div class="school-logo">
-          <img src="assets/pws.png" alt="โลโก้โรงเรียน">
-          <p></p>
-        </div>
-
-        <div class="personal-info">
-          <p class="eyebrow">PERSONAL INFORMATION</p>
-          <h2>ประวัติส่วนตัว<span class="dot">.</span></h2>
-
-          <div class="personal-info-list">
-            <div>
-              <span>ชื่อ–นามสกุล</span>
-              <strong>ลัญฉกร วิมล</strong>
-            </div>
-            <div>
-              <span>วันเกิด</span>
-              <strong>17 มกราคม 2552</strong>
-            </div>
-            <div>
-              <span>เบอร์โทรศัพท์</span>
-              <strong>081-581-9655</strong>
-            </div>
-            <div>
-              <span>อีเมล</span>
-              <strong>lunchakornwimol@gmail.com</strong>
-            </div>
-            <div>
-              <span>โรงเรียน</span>
-              <strong>มอ.วิทยานุสรณ์ สุราษฎร์ธานี</strong>
-            </div>
-            <div>
-              <span>ระดับการศึกษา</span>
-              <strong>มัธยมศึกษาปีที่ 6</strong>
-            </div>
-          </div>
-          <!-- Transcript Documents -->
-<div class="transcript-panel">
-
-  <p class="eyebrow">ACADEMIC TRANSCRIPT</p>
-  <h3>เอกสารผลการเรียน<span>.</span></h3>
-
-  <div class="transcript-grid">
-
-    <button class="transcript-card"
-      onclick="openTranscript('assets/pp1-1.JPG')">
-      <img src="assets/pp1-1.JPG" alt="ใบ ปพ.1 หน้า 1">
-      <span>ปพ.1 · หน้า 1 <b>↗</b></span>
-    </button>
-
-    <button class="transcript-card"
-      onclick="openTranscript('assets/pp1-2.JPG')">
-      <img src="assets/pp1-2.JPG" alt="ใบ ปพ.1 หน้า 2">
-      <span>ปพ.1 · หน้า 2 <b>↗</b></span>
-    </button>
-
-  </div>
-
-  <p class="transcript-hint">
-    คลิกเพื่อดูเอกสารขนาดใหญ่และซูมรายละเอียด
+<div class="hero-desc">
+  <p class="hero-intro">
+    สัมผัสความสนุกของเทศกาลสงกรานต์
+    ผ่านเกม 2D สไตล์ภาพวาดสุดสดใส
   </p>
 
+  <p class="hero-detail">
+    ผลงานจากความร่วมมือของกลุ่ม Game Art
+    และ Programming ในค่าย DDCT Innovative Camp 2026
+  </p>
+
+  <p class="hero-credit">
+    หลักสูตรการออกแบบดิจิทัลและเทคโนโลยีแนวสร้างสรรค์
+    วิทยาลัยสหวิทยาการ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
+  </p>
 </div>
-        </div>
+
+
+
+      <a href="#game" class="discover">
+        DISCOVER THE GAME ↓
+      </a>
+    </div>
+
+   <div class="hero-image">
+  <div class="image-glow"></div>
+  <img src="assets/poster.JPG" alt="Songkran Simulator Poster">
+</div>
+
+  </section>
+
+
+  <!-- GAME VIDEO -->
+  <section class="game-section" id="game">
+
+    <div class="section-title">
+      <div>
+        <span class="eyebrow">GAME PREVIEW</span>
+        <h2>Experience the <span>Game</span></h2>
       </div>
-    </section>
-
-    <!-- About -->
-    <section class="about section" id="about">
-      <div class="section-head">
-        <span class="section-no">01 / PROFILE</span>
-        <span class="section-rule"></span>
-        <span class="section-note">จุดเริ่มต้นของความสนใจ</span>
-      </div>
-
-      <div class="about-grid">
-        <div>
-          <p class="eyebrow">A LITTLE ABOUT ME</p>
-
-          <h2>
-            จากความสงสัย<br>
-            สู่การลงมือทำ<span class="dot">.</span>
-          </h2>
-        </div>
-
-        <div class="about-text">
-          <p>
-            ตั้งแต่วัยเยาว์ หลังเลิกเรียน ผมมักจะไปนั่งรอคุณพ่อที่สำนักงานอยู่เป็นประจำ
-            ซึ่งคุณพ่อทำงานเป็น วิศวกรไฟฟ้า ของบริษัทเอกชนรายใหญ่แห่งหนึ่ง
-            ทำให้ผมมีโอกาสเห็นการทำงานที่เกี่ยวข้องกับระบบคอมพิวเตอร์และซอฟต์แวร์อยู่เสมอ
-            ผมจึงเริ่มสงสัยว่า โซลูชั่นเทคโนโลยี เหล่านี้ถูกสร้างขึ้นมาได้อย่างไร
-            ที่สามารถช่วยให้การทำงานสะดวกและมีประสิทธิภาพมากขึ้นได้
-          </p>
-
-          <p>
-            เมื่อเริ่มสนใจคอมพิวเตอร์มากขึ้น ผมได้เรียนรู้และทดลองสร้างผลงานด้วยตนเอง
-            รวมถึงเข้าร่วมกิจกรรมที่เกี่ยวข้องกับการพัฒนาเว็บไซต์ด้วย HTML
-            และการสร้างเกมด้วย Unity จากประสบการณ์เหล่านี้ ช่วยให้ผมได้ฝึกคิดอย่างเป็นระบบ
-            ทดลองแก้ปัญหา และเข้าใจกระบวนการสร้างผลงานจากแนวคิดให้กลายเป็นสิ่งที่ใช้งานได้จริง
-          </p>
-
-          <p>
-            ผมต้องการเข้าศึกษาใน สาขาวิทยาการคอมพิวเตอร์
-            เพื่อพัฒนาความรู้ด้านการเขียนโปรแกรม อัลกอริทึม
-            และการออกแบบระบบซอฟต์แวร์ให้ลึกซึ้งยิ่งขึ้น
-            รวมถึงนำความรู้ไปประยุกต์ใช้กับปัญหาในชีวิตจริง
-          </p>
-
-          <p>
-            ในอนาคต ผมมีความมุ่งมั่นที่จะสร้าง นวัตกรรมทางเทคโนโลยี ที่ช่วยแก้ปัญหาในระบบคอมพิวเตอร์
-            และซอฟแวร์ เพื่อเป็นประโยชน์ต่อผู้คนได้ เพราะผมเชื่อว่าความรู้จะมีคุณค่าอย่างแท้จริง
-            เมื่อเรานำไปใช้พัฒนาสังคม ไม่ใช่เพียงเพื่อความสำเร็จของตนเอง
-          </p>
-
-          <div class="quote">
-            “ความรู้จะมีคุณค่า เมื่อเราใช้มันสร้างประโยชน์ให้ผู้อื่น”
-          </div>
-        </div>
-      </div>
-
-      <div class="skill-strip">
-        <span>AREAS I EXPLORE</span>
-        <div>Programming</div>
-        <div>Web Development</div>
-        <div>Game Development</div>
-        <div>AI &amp; Robotics</div>
-      </div>
-    </section>
-
-    <!-- Experiences -->
-    <section class="journey section" id="journey">
-      <div class="section-head">
-        <span class="section-no">02 / JOURNEY</span>
-        <span class="section-rule"></span>
-        <span class="section-note">เรียนรู้จากประสบการณ์จริง</span>
-      </div>
-
-      <div class="journey-title">
-        <div>
-          <p class="eyebrow">CAMPS · WORKSHOPS · PRACTICE</p>
-          <h2>กิจกรรม<span class="dot">.</span></h2>
-        </div>
-
-        <p>
-          แต่ละกิจกรรมช่วยให้ผมได้ทดลองใช้ความรู้
-          ฝึกคิดอย่างเป็นระบบ และมองเห็นแนวทางที่อยากเรียนรู้ต่อ
-        </p>
-      </div>
-
-      <div class="experience-list">
-
-        <!-- Experience 01 -->
-        <article class="experience featured">
-          <div class="project-images">
-            <img
-              src="assets/ddct-2.png"
-              alt="ภาพกิจกรรม DDCT Innovative Camp 2026"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="exp-index">01</div>
-
-          <div class="exp-content">
-            <div class="exp-type">
-              PROGRAMMING CAMP · OCT 2026
-            </div>
-
-            <h3>DDCT Innovative Camp 2026</h3>
-
-            <p class="organizer">
-              ผู้จัด: หลักสูตรการออกแบบดิจิทัลและเทคโนโลยีแนวสร้างสรรค์ วิทยาลัยสหวิทยาการ
-              มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
-            </p>
-
-            <p>
-              เข้าร่วม Track Programming โดยได้เรียนรู้แนวคิดการเขียนโปรแกรมเกม
-            และ การทำงานร่วมกันเป็นทีมกับฝ่ายGameArtในการสร้างเกม 2D Platformer 
-            </p>
-
-            <div class="benefits">
-              <h4>ประโยชน์ที่ได้รับ</h4>
-              <ul>
-                <li>เข้าใจแนวคิดการเขียนโปรแกรมเกมและวิธีแบ่งปัญหาเป็นส่วนย่อย ๆ</li>
-                <li>ฝึกทำงานร่วมกับฝ่าย Game Art ทำให้เห็นว่างานโปรแกรมและงานออกแบบต้องประสานกัน</li>
-                <li>ได้เห็นกระบวนการสร้างเกม 2D Platformer ตั้งแต่ไอเดียจนเล่นได้จริง</li>
-              </ul>
-            </div>
-
-            <div class="tags">
-              <span>Programming</span>
-              <span>Computational Thinking</span>
-              <span>Design Thinking</span>
-            </div>
-
-            <a class="activity-button" href="activity.html?id=01">
-              ภาพกิจกรรม ↗
-            </a>
-          </div>
-
-          <div class="exp-arrow">↗</div>
-        </article>
-
-        <!-- Experience 02 -->
-        <article class="experience">
-          <div class="project-images">
-            <img
-              src="assets/icsyou-1.jpg"
-              alt="ภาพกิจกรรม I CS YOU CAMP 2026"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="exp-index">02</div>
-
-          <div class="exp-content">
-            <div class="exp-type">
-              WEB DEVELOPMENT · AUG 2026
-            </div>
-
-            <h3>I CS YOU CAMP 2026</h3>
-
-            <p class="organizer">
-              ผู้จัด: ภาควิชาวิทยาการคอมพิวเตอร์
-              คณะวิทยาศาสตร์ มหาวิทยาลัยเกษตรศาสตร์
-            </p>
-
-            <p>
-              เรียนรู้พื้นฐานการพัฒนาเว็บไซต์ด้วย HTML, CSS และ JavaScript
-              ใช้ GitHub จัดเก็บโค้ด และทดลองใช้ AI
-              เป็นเครื่องมือช่วยพัฒนาโปรแกรม
-            </p>
-
-            <div class="benefits">
-              <h4>ประโยชน์ที่ได้รับ</h4>
-              <ul>
-                <li>มีพื้นฐาน HTML, CSS และ JavaScript พอจะสร้างเว็บไซต์ของตัวเองได้</li>
-                <li>รู้จักใช้ GitHub เก็บและจัดการโค้ดอย่างเป็นระบบ</li>
-                <li>เรียนรู้การใช้ AI เป็นเครื่องมือช่วยพัฒนาโปรแกรม โดยยังต้องเข้าใจโค้ดที่ได้มาด้วยตนเอง</li>
-              </ul>
-            </div>
-
-            <div class="tags">
-              <span>HTML / CSS / JS</span>
-              <span>GitHub</span>
-              <span>AI Tools</span>
-            </div>
-
-            <a class="activity-button" href="activity.html?id=02">
-              ภาพกิจกรรม ↗
-            </a>
-          </div>
-
-          <div class="exp-arrow">↗</div>
-        </article>
-
-        <!-- Experience 03 -->
-        <article class="experience">
-          <div class="project-images">
-            <img
-              src="assets/unity-1.jpg"
-              alt="ภาพกิจกรรม It's All About Computer Engineer Camp"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="exp-index">03</div>
-
-          <div class="exp-content">
-            <div class="exp-type">
-              GAME DEVELOPMENT · APR 2026
-            </div>
-
-            <h3>It's All About Computer Engineer Camp</h3>
-
-            <p class="organizer">
-              ผู้จัด: ภาควิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์
-              มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตหาดใหญ่
-            </p>
-
-            <p>
-              ทดลองสร้างเกมด้วย Unity ตั้งแต่แนวคิด
-              การสร้างฉากและวัตถุ ไปจนถึงการเขียนโปรแกรม
-              ควบคุมองค์ประกอบต่าง ๆ ภายในเกม
-            </p>
-
-            <div class="benefits">
-              <h4>ประโยชน์ที่ได้รับ</h4>
-              <ul>
-                <li>เห็นขั้นตอนการสร้างเกมครบวงจร ตั้งแต่แนวคิด การสร้างฉาก ไปจนถึงการเขียนโค้ด</li>
-                <li>ได้เขียน C# เพื่อควบคุมวัตถุและตรรกะภายในเกมด้วย Unity</li>
-                <li>ฝึกคิดอย่างเป็นระบบและลองแก้ปัญหาด้วยตนเองเมื่อเกมไม่ทำงานตามที่ต้องการ</li>
-              </ul>
-            </div>
-
-            <div class="tags">
-              <span>Unity</span>
-              <span>Game Logic</span>
-              <span>C#</span>
-            </div>
-
-            <a class="activity-button" href="activity.html?id=03">
-              ภาพกิจกรรม ↗
-            </a>
-          </div>
-
-          <div class="exp-arrow">↗</div>
-        </article>
-
-        <!-- Experience 04 -->
-        <article class="experience">
-          <div class="project-images">
-            <img
-              src="assets/kmitl1.PNG"
-              alt="ภาพกิจกรรม K-Engineering World Tour and Competency Challenge 2026"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="exp-index">04</div>
-
-          <div class="exp-content">
-            <div class="exp-type">
-              ENGINEERING · 2026
-            </div>
-
-            <h3>
-              K-Engineering World Tour and Competency Challenge 2026
-            </h3>
-
-            <p class="organizer">
-              ผู้จัด: คณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
-            </p>
-
-            <p>
-              เปิดโลกทัศน์ด้านวิศวกรรมและเทคโนโลยี
-              ผ่านการเยี่ยมชมห้องปฏิบัติการและกิจกรรมจากศูนย์การเรียนรู้ต่าง ๆ
-            </p>
-
-            <div class="benefits">
-              <h4>ประโยชน์ที่ได้รับ</h4>
-              <ul>
-                <li>เห็นการนำความรู้วิศวกรรมและเทคโนโลยีไปใช้งานจริงจากห้องปฏิบัติการและศูนย์การเรียนรู้</li>
-                <li>เปิดมุมมองว่าวิทยาการคอมพิวเตอร์เชื่อมโยงกับงานด้านอื่นได้อย่างไร</li>
-              </ul>
-            </div>
-
-            <div class="tags">
-              <span>Engineering</span>
-              <span>Technology</span>
-            </div>
-
-            <a class="activity-button" href="activity.html?id=04">
-              ภาพกิจกรรม ↗
-            </a>
-          </div>
-
-          <div class="exp-arrow">↗</div>
-        </article>
-
-        <!-- Experience 05 -->
-        <article class="experience">
-          <div class="project-images">
-            <img
-              src="assets/kmutnb.PNG"
-              alt="ภาพกิจกรรม KMUTNB Open House 2026"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="exp-index">05</div>
-
-          <div class="exp-content">
-            <div class="exp-type">
-              OPEN HOUSE · 2026
-            </div>
-
-            <h3>KMUTNB Open House 2026</h3>
-
-            <p class="organizer">
-              ผู้จัด: มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ
-            </p>
-
-            <p>
-              เยี่ยมชมห้องปฏิบัติการและกิจกรรมด้านคอมพิวเตอร์
-              และวิศวกรรมศาสตร์ เพื่อสำรวจแนวทางการเรียนต่อ
-              และทำความรู้จักกับเทคโนโลยีสมัยใหม่
-            </p>
-
-            <div class="benefits">
-              <h4>ประโยชน์ที่ได้รับ</h4>
-              <ul>
-                <li>ได้ข้อมูลตรงเกี่ยวกับหลักสูตรและบรรยากาศการเรียนด้านคอมพิวเตอร์และวิศวกรรมศาสตร์</li>
-                <li>ช่วยเปรียบเทียบแนวทางการเรียนต่อและตัดสินใจเลือกสาขาได้ชัดเจนขึ้น</li>
-                <li>ได้รู้จักเทคโนโลยีสมัยใหม่ที่ยังไม่เคยเห็นมาก่อน</li>
-              </ul>
-            </div>
-
-            <div class="tags">
-              <span>Computer</span>
-              <span>Engineering</span>
-            </div>
-
-            <a class="activity-button" href="activity.html?id=05">
-              ภาพกิจกรรม ↗
-            </a>
-          </div>
-
-          <div class="exp-arrow">↗</div>
-        </article>
-
-        <!-- Experience 06 -->
-        <article class="experience">
-          <div class="project-images">
-            <img
-              src="assets/t.jpg"
-              alt="ภาพกิจกรรมฝึกประสบการณ์วิชาชีพ เทศบาลนครสุราษฎร์ธานี"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="exp-index">06</div>
-
-          <div class="exp-content">
-            <div class="exp-type">
-              INTERNSHIP · OCT 2025
-            </div>
-
-            <h3>ฝึกประสบการณ์วิชาชีพ งานเทคโนโลยีสารสนเทศ</h3>
-
-            <p class="organizer">
-              ผู้จัด: งานเทคโนโลยีสารสนเทศ ฝ่ายบริหารงานทั่วไป สำนักปลัดเทศบาล
-              เทศบาลนครสุราษฎร์ธานี
-            </p>
-
-            <p>
-              ฝึกปฏิบัติงานด้านเทคโนโลยีสารสนเทศ 40 ชั่วโมง
-              เรียนรู้ระบบ Smart Office และระบบ CCTV
-              รวมถึงการดูแลระบบสารสนเทศที่สนับสนุนการทำงานของหน่วยงาน
-            </p>
-
-            <div class="benefits">
-              <h4>ประโยชน์ที่ได้รับ</h4>
-              <ul>
-                <li>ได้ประสบการณ์ทำงานด้านไอทีในหน่วยงานจริง 40 ชั่วโมง</li>
-                <li>เข้าใจการทำงานของระบบ Smart Office, CCTV และเครือข่ายที่หน่วยงานใช้</li>
-                <li>ฝึกความรับผิดชอบ การตรงต่อเวลา และการทำงานร่วมกับเจ้าหน้าที่ในองค์กร</li>
-              </ul>
-            </div>
-
-            <div class="tags">
-              <span>IT Support</span>
-              <span>Smart Office</span>
-              <span>CCTV</span>
-              <span>Networking</span>
-            </div>
-
-            <a class="activity-button" href="activity.html?id=06">
-              ภาพกิจกรรม ↗
-            </a>
-          </div>
-
-          <div class="exp-arrow">↗</div>
-        </article>
-
-        <!-- Experience 07 -->
-        <article class="experience featured">
-          <div class="project-images">
-            <img
-              src="assets/กู้ภัย (1).JPG"
-              alt="ฝึกอบรมการช่วยชีวิตและการปฐมพยาบาลเบื้องต้น"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="exp-index">07</div>
-
-          <div class="exp-content">
-            <div class="exp-type">
-              OTHER CAMP · APR 2025
-            </div>
-
-            <h3>ฝึกอบรมการช่วยชีวิตและการปฐมพยาบาลเบื้องต้น</h3>
-
-            <p class="organizer">
-              ผู้จัด: มูลนิธิกุศลศรัทธา จังหวัดสุราษฎร์ธานี
-            </p>
-
-            <p>
-              เข้าร่วม การฝึกอบรมการช่วยชีวิตและการปฐมพยาบาลเบื้องต้นการจับชีพจร การทำ CPR การใช้เครื่อง AED การปฐมพยาบาลเบื้องต้น ได้สัมผัสอาจารย์ใหญ่ เทคนิคการจับงู และยังได้รับเลือกให้
-              เป็นหัวหน้าของผู้เข้าอบรมในการฝึกอบรมครั้งนี้ด้วย
-            </p>
-
-            <div class="benefits">
-              <h4>ประโยชน์ที่ได้รับ</h4>
-              <ul>
-                <li>มีทักษะช่วยชีวิตที่ใช้ได้จริง ทั้งการทำ CPR การใช้เครื่อง AED และการปฐมพยาบาลเบื้องต้น</li>
-                <li>ได้ฝึกภาวะผู้นำจากการเป็นหัวหน้าผู้เข้าอบรม ทั้งการประสานงานและดูแลเพื่อนร่วมกลุ่ม</li>
-                <li>เห็นคุณค่าของการเป็นจิตอาสาและการช่วยเหลือผู้อื่นในสถานการณ์ฉุกเฉิน</li>
-                <li>ได้ฝึกฝนสภาพจิตใจให้มีความกล้าที่จะก้าวผ่านความกลัวใด ๆ ที่เกิดในใจของเราได้</li>
-              </ul>
-            </div>
-
-            <div class="tags">
-              <span>Leadership</span>
-              <span>CPR</span>
-              <span>Volunteer</span>
-            </div>
-
-            <a class="activity-button" href="activity.html?id=07">
-              ภาพกิจกรรม ↗
-            </a>
-          </div>
-
-          <div class="exp-arrow">↗</div>
-        </article>
-
-        <!-- Experience 08 -->
-        <article class="experience featured no-image">
-          <div class="exp-index">08</div>
-
-          <div class="exp-content">
-            <div class="exp-type">
-              VOLUNTEER · OCT 2026
-            </div>
-
-            <h3>กิจกรรมจิตอาสาพระราชทาน เนื่องในวันนวมินทรมหาราช</h3>
-
-            <p class="organizer">
-              ผู้จัด: จังหวัดสุราษฎร์ธานี 
-            </p>
-
-            <p>
-              เข้าร่วมกิจกรรมจิตอาสาพระราชทานเนื่องในวันนวมินทรมหาราช (13 ตุลาคม)
-              โดยได้ ช่วยทำความสะอาด พัฒนาพื้นที่ ปลูกต้นไม้ ภายในมหาวิทยาลัยราชภัฏสุราษฎร์ธานี เพื่อถวายเป็นพระราชกุศลแด่รัชกาลที่ 9
-            </p>
-
-            <div class="benefits">
-              <h4>ประโยชน์ที่ได้รับ</h4>
-              <ul>
-                <li>ได้ฝึกความรับผิดชอบต่อส่วนรวมและการทำงานร่วมกับผู้อื่น</li>
-                <li>เห็นคุณค่าของการเป็นจิตอาสาและการทำประโยชน์เพื่อสังคม</li>
-                <li>เกิดความภาคภูมิใจในการร่วมทำความดีเพื่อถวายเป็นพระราชกุศลแด่พระมหากษัตริย์</li>
-                <li>สถานที่ราชการมีความสะอาดสวยงามและเป็นระเบียบมากขึ้นจากความร่วมมือของจิตอาสา</li>
-              </ul>
-            </div>
-
-            <div class="tags">
-              <span>Volunteer</span>
-              <span>Teamwork</span>
-              <span>Social Responsibility</span>
-            </div>
-
-            <a class="activity-button" href="activity.html?id=08">
-              ภาพกิจกรรม ↗
-            </a>
-          </div>
-
-          <div class="exp-arrow">↗</div>
-        </article>
-
-        <!-- Experience 09 -->
-        <article class="experience featured no-image">
-          <div class="exp-index">09</div>
-
-          <div class="exp-content">
-            <div class="exp-type">
-              VOLUNTEER · JUL 2025
-            </div>
-
-            <h3>ฝึกนักศึกษาวิชาทหารบังคับบัญชา</h3>
-
-            <p class="organizer">
-              ผู้จัด: หน่วยฝึกนักศึกษาวิชาทหาร มณฑลทหารบกที่ 45 จังหวัดสุราษฎร์ธานี
-            </p>
-
-            <p>
-              เข้าร่วมการฝึกนักศึกษาวิชาทหารบังคับบัญชา โดยได้เรียนรู้การฝึกทหาร การวางแผน การทำงานเป็นทีม การเป็นผู้นำในสถานการณ์ต่าง ๆ และได้รับการคัดเลือกเป็น นศท.จราจร ที่คอยอำนวยความสะดวกและดูแลความปลอดภัยให้กับผู้เข้าร่วมกิจกรรมของหน่วยฝึกนักศึกษาวิชาทหาร
-            </p>
-
-            <div class="benefits">
-              <h4>ประโยชน์ที่ได้รับ</h4>
-              <ul>
-                <li>ได้ฝึกความเป็นผู้นำและการทำงานร่วมกับผู้อื่นในสถานการณ์ต่าง ๆ</li>
-                <li>ได้เรียนรู้การวางแผนและการทำงานเป็นทีม</li>
-                <li>เกิดความภาคภูมิใจในการรปติบัติหน้าที่และรับผิดชอบต่อส่วนรวม</li>
-              </ul>
-            </div>
-
-            <div class="tags">
-              <span>Volunteer</span>
-              <span>Teamwork</span>
-              <span>Social Responsibility</span>
-            </div>
-
-            <a class="activity-button" href="activity.html?id=09">
-              ภาพกิจกรรม ↗
-            </a>
-          </div>
-
-          <div class="exp-arrow">↗</div>
-        </article>
-
-
-      </div>
-    </section>
-
-
-    <!-- Workshops -->
-    <section class="workshops section" id="workshops">
-      <div class="section-head">
-        <span class="section-no">03 / WORKSHOPS</span>
-        <span class="section-rule"></span>
-        <span class="section-note">ต่อยอดทักษะเฉพาะทาง</span>
-      </div>
-
-      <div class="workshop-grid">
-
-        <!-- Workshop 01 -->
-        <article class="workshop-card">
-          <div class="workshop-image">
-            <img
-              src="assets/kmitl3.PNG"
-              alt="กิจกรรม Smart Manufacturing by Autonomous Mobile Robot"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="workshop-symbol">◎</div>
-          <span class="workshop-label">ROBOTICS · ROS</span>
-
-          <h3>Smart Manufacturing by Autonomous Mobile Robot</h3>
-
-          <p class="workshop-organizer">
-            ผู้จัด: คณะวิศวกรรมศาสตร์
-            สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
-          </p>
-
-          <p>
-            เรียนรู้การทำงานของหุ่นยนต์เคลื่อนที่อัตโนมัติผ่าน ROS
-            และหลักการควบคุมด้วยโค้ด
-            เชื่อมโยงความรู้คอมพิวเตอร์กับระบบอัตโนมัติ
-          </p>
-
-          <span class="workshop-date">05 JUL 2026</span>
-
-          <div class="tags">
-            <span>ROS</span>
-            <span>Robotics</span>
-            <span>Automation</span>
-            <span>Python</span>
-          </div>
-        </article>
-
-        <!-- Workshop 02 -->
-        <article class="workshop-card">
-          <div class="workshop-image">
-            <img
-              src="assets/kmitl2.PNG"
-              alt="กิจกรรม Edge AI on Arduino Q"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="workshop-symbol">✳</div>
-          <span class="workshop-label">ARTIFICIAL INTELLIGENCE</span>
-
-          <h3>Edge AI on Arduino Q</h3>
-
-          <p class="workshop-organizer">
-            ผู้จัด: คณะวิศวกรรมศาสตร์
-            สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
-          </p>
-
-          <p>
-            เรียนรู้การประยุกต์ใช้ AI บนอุปกรณ์ฮาร์ดแวร์ฝังตัว
-            การเขียนโปรแกรมควบคุมอุปกรณ์
-            และการประมวลผลข้อมูล
-          </p>
-
-          <span class="workshop-date">05 JUL 2026</span>
-
-          <div class="tags">
-            <span>AI</span>
-            <span>Arduino</span>
-            <span>Embedded</span>
-            <span>Python</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- Statement -->
-    <section class="statement">
-      <div class="statement-mark">“</div>
 
       <p>
-        ผมอยากเรียนรู้ให้มากพอที่จะสร้าง นวัตกรรมทางเทคโนโลยี ที่แก้ปัญหาได้จริง
-        และทำให้ชีวิตของผู้คนดีขึ้น
+        รับชมตัวอย่างการเล่น<br>
+        ก่อนลงสนามจริง!
+      </p>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="video-container">
+
+      <div class="video-header">
+        <span class="status-dot"></span>
+        GAMEPLAY VIDEO
+        <span class="video-label">PREVIEW 01</span>
+      </div>
+
+      <video controls playsinline preload="metadata"
+        poster="assets/songkran-poster.jpg">
+
+        <source src="assets/gameplay.mp4" type="video/mp4">
+
+        Your browser does not support video.
+
+      </video>
+
+    </div>
+
+
+    <!-- DOWNLOAD GAME -->
+    <div class="play-section">
+
+      <span class="ready">✦ READY PLAYER ONE? ✦</span>
+
+      <a href="assets/06_InsertFunnyJoke.zip"
+         class="play-button"
+         id="downloadButton"
+         download>
+
+        <span class="game-icon">🎮</span>
+
+        <span class="button-text">
+          <strong>ดาวน์โหลดเกม</strong>
+          <small>DOWNLOAD FOR WINDOWS · ZIP</small>
+        </span>
+
+        <span class="arrow">↓</span>
+
+      </a>
+
+      <p id="deviceMessage">
+        ดาวน์โหลดเกมและแตกไฟล์ ZIP ก่อนเปิดเล่นบน Windows
       </p>
 
-      <span>MY DIRECTION · COMPUTER SCIENCE</span>
-    </section>
+    </div>
 
-  </main>
+  </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <a class="wordmark" href="#home">
-      <span class="mark">LW</span>
-      <span>PORTFOLIO<span class="year"> / 2570</span></span>
-    </a>
+</main>
 
-    <p>
-      ลัญฉกร วิมล · วิทยาการคอมพิวเตอร์
-    </p>
 
-    <a href="#home">กลับขึ้นด้านบน ↑</a>
-  </footer>
+<!-- FOOTER -->
+<footer>
 
-  <!-- JavaScript -->
-  <script src="editor.js"></script>
-  <script src="script.js"></script>
+  <div class="footer-logo">
+    <span class="logo-icon">SS</span>
+    SONGKRAN SIMULATOR
+  </div>
+
+  <p>GAME SHOWCASE · INSERT FUNNY JOKE GROUP · DDCT INNOVATIVE CAMP 2026 </p>
+
+  <a href="#home" class="back-top">↑</a>
+
+</footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
